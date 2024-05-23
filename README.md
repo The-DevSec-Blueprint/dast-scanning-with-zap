@@ -1,5 +1,17 @@
 # Scanning Localhost Application with Docker ZAP
 
+![YouTube Video]()
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Key Features of ZAP](#key-features-of-zap)
+3. [Benefits of Using ZAP for DAST](#benefits-of-using-zap-for-dast)
+4. [Getting Started with ZAP](#getting-started-with-zap)
+5. [Setting up TIWAP](#setting-up-tiwap)
+6. [Docker Installation Instructions](#docker-installation-instructions)
+7. [Execution Instructions](#execution-instructions)
+
 ## Introduction
 
 Dynamic Application Security Testing (DAST) is a type of security testing that involves testing an application in its running state. Unlike static analysis, which examines the source code, DAST scans an application from the outside in, simulating an attacker’s perspective. This approach helps identify vulnerabilities that might be exploited in a real-world attack scenario, such as SQL injection, cross-site scripting (XSS), and other web application vulnerabilities.
@@ -26,26 +38,57 @@ One of the most popular tools for performing DAST is the Zed Attack Proxy (ZAP),
 
 To start using ZAP for DAST scanning, follow these steps:
 
-<<<<<<< HEAD
-1. **Download and Install Java**: Before installing ZAP, ensure that you have Java installed on your system, as ZAP requires Java to run. You can download and install the latest version of Java from the [official Oracle website](https://www.oracle.com/java/technologies/javase-downloads.html).
-=======
->>>>>>> a9e859d473d4d9799bf65137c4c23deacca7f113
 1. **Download and Install ZAP**: ZAP is available for Windows, macOS, and Linux. You can download it from the [official ZAP website](https://www.zaproxy.org/download/).
 1. **Configure Your Browser**: Set up your web browser to use ZAP as a proxy to capture and inspect the HTTP traffic.
 1. **Start Scanning**: Use ZAP's spidering and scanning features to discover and test the web application's endpoints for vulnerabilities.
 1. **Review and Mitigate**: Analyze the scan results to identify vulnerabilities and take appropriate actions to mitigate them.
 
-<<<<<<< HEAD
-## Post-Installation Configuration
+## Setting up TIWAP
 
-1. **Java Configuration**:
-    - Ensure that your system’s `JAVA_HOME` environment variable is set correctly. This is necessary for ZAP to locate your Java installation.
+Sure! Here are the improved instructions with more clarity and additional details for each step:
 
-1. **Proxy Configuration**:
-    - Configure your web browser to use ZAP as a proxy. This allows ZAP to intercept and analyze HTTP/HTTPS traffic.
+### Step-by-Step Instructions to Set Up the Web Application
 
-By following these steps, you will have OWASP ZAP installed on your system, ready for use in security testing your web applications.
-=======
+1. **Clone the GitHub Repository**
+
+   First, clone the repository to your local machine. Open your terminal and run the following command:
+
+   ```bash
+   git clone https://github.com/The-DevSec-Blueprint/TIWAP.git 
+   ```
+
+   This command downloads all the project files from the GitHub repository to a directory named `TIWAP` on your local machine.
+
+1. **Navigate to the Project Directory**
+
+   After cloning the repository, navigate into the project directory:
+
+   ```bash
+   cd TIWAP
+   ```
+
+   This changes your current directory to the `TIWAP` directory, where the project files are located.
+
+1. **Run Docker Compose to Spin Up the Web Application**
+
+   Use Docker Compose to build and start the web application. Make sure Docker is installed and running on your system. Then run:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   This command uses the `docker-compose.yml` file to build the Docker containers and start the application in detached mode (running in the background).
+
+1. **Verify the Application is Running**
+
+   After running the Docker Compose command, verify that the application is running. Open your web browser and navigate to:
+
+   ```bash
+   http://localhost:8000
+   ```
+
+   You should see the web application up and running.
+
 ## Docker Installation Instructions
 
 In order for you to run any of these commands, you'll need to have Docker installed. You can view the instructions here: [Get Docker: Installation Instructions](https://docs.docker.com/get-docker/).
@@ -68,9 +111,17 @@ Make sure your local application is running on localhost. For example, if it's a
 
 Use the following command to run the ZAP scanner against your localhost application. This command assumes your application is accessible on port 8080. Adjust the port number accordingly if your application uses a different port.
 
-```bash
-docker run -v $(pwd):/zap/wrk/:rw --network="host" zaproxy/zap-stable zap-baseline.py -t https://localhost:8000 -r scan-report.html
-```
+- Linux/Unix
+
+    ```bash
+    docker run -v $(pwd):/zap/wrk/:rw --network="host" zaproxy/zap-stable zap-baseline.py -t https://localhost:8000 -r scan-report.html
+    ```
+
+- Windows Powershell
+
+    ```cmd
+    docker run -v ${PWD}:/zap/wrk/:rw --network="host" zaproxy/zap-stable zap-baseline.py -t https://localhost:8000 -r scan-report.html
+    ```
 
 #### Explanation of the Command
 
@@ -88,4 +139,3 @@ Once the scan is complete, an HTML report named `scan-report.html` will be saved
 
 - **Scan Duration**: Depending on the complexity and size of your application, the scan may take some time. Ensure your application remains running until the scan is completed.
 - **Security Considerations**: Regularly update the Docker image with `docker pull owasp/zap2docker-stable` to ensure you are using the latest security checks and features.
->>>>>>> a9e859d473d4d9799bf65137c4c23deacca7f113
