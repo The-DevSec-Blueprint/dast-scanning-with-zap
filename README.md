@@ -1,6 +1,6 @@
 # Scanning Localhost Application with Docker ZAP
 
-![YouTube Video]()
+[![YouTube Video](./thumbnail.svg)](https://www.youtube.com/watch?v=j9vqvzBPVMw)
 
 ## Table of Contents
 
