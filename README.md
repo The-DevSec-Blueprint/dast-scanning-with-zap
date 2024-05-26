@@ -45,8 +45,6 @@ To start using ZAP for DAST scanning, follow these steps:
 
 ## Setting up TIWAP
 
-Sure! Here are the improved instructions with more clarity and additional details for each step:
-
 ### Step-by-Step Instructions to Set Up the Web Application
 
 1. **Clone the GitHub Repository**
